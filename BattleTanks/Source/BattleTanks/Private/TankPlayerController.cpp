@@ -6,9 +6,14 @@
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("PlayerController Begin Play"));
-	FString LogName = GetControlledTank()->GetName();
-	UE_LOG(LogTemp,Warning, TEXT("%s"), *LogName) 
+	if (GetControlledTank())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("%s is possessing: %s"), *GetName(), *GetControlledTank()->GetName());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("%s is not possessing a tank"), *GetName());
+	}
 }
 
 ATank* ATankPlayerController::GetControlledTank() const
