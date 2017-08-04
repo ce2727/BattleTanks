@@ -19,6 +19,7 @@ void ATankAIController::BeginPlay()
 	UE_LOG(LogTemp,Warning,TEXT("%s finds the player tank as: %s"),*GetName(), *GetPlayerTank()->GetName())
 }
 
+
 ATank* ATankAIController::GetControlledTank() const
 {
 	return Cast<ATank>(GetPawn());
