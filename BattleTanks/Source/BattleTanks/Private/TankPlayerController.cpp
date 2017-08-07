@@ -31,8 +31,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector HitLocation; //Out parameter
 	if (GetSightRayHitLocation(HitLocation)) //Has side effect, it's going to linetrace
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Look Direction: %s"), *HitLocation.ToString())
-		//TODO Tell controlled tank to aim there
+		GetControlledTank()->AimAt(HitLocation);
 	}
 
 }
@@ -52,7 +51,6 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector &OutHitLocation) cons
 	FVector OutLookDirection;
 	GetLookVectorDirection(CrosshairScreenLocation, OutLookDirection);//Set outlookdirection
 	GetLookVectorHitLocation(OutLookDirection, OutHitLocation);//Apply outlookdirection to set outhitlocation
-	UE_LOG(LogTemp, Warning, TEXT("Targeted Location: %s"), *OutHitLocation.ToString())
 	return true;
 }
 
