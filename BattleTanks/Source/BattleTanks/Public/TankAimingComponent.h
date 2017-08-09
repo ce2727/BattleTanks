@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Gameframework/Actor.h"
+#include "Kismet/GameplayStatics.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
@@ -28,7 +29,7 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-	void AimAt(FVector HitLocation);
+	void AimAt(FVector HitLocation,float LaunchSpeed);
 
 	void SetBarrel(UStaticMeshComponent* BarrelToSet);
 
