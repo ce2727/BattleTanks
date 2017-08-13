@@ -38,7 +38,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation,float LaunchSpeed)
 	FVector OutLaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
 
-	bool TrajectoryFound = UGameplayStatics::SuggestProjectileVelocity
+	bool bTrajectoryFound = UGameplayStatics::SuggestProjectileVelocity
 	(
 		this,
 		OutLaunchVelocity,
@@ -48,7 +48,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation,float LaunchSpeed)
 		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
 
-	if (TrajectoryFound){
+	if (bTrajectoryFound){
 	auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 	UE_LOG(LogTemp, Warning, TEXT("Aiming at %s"), *AimDirection.ToString());
 	}
@@ -57,4 +57,12 @@ void UTankAimingComponent::AimAt(FVector HitLocation,float LaunchSpeed)
 void UTankAimingComponent::SetBarrel(UStaticMeshComponent* BarrelToSet)
 {
 	Barrel = BarrelToSet;
+}
+
+void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
+{
+	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
+	auto AimAsRotator = AimDirection.Rotation();
+	auto DeltaRotator = AimAsRotator - BarrelRotator;
+	UE_LOG(LogTemp,Warning,TEXT("AimAsRotator: %s"), *AimAsRotator.ToString());
 }
