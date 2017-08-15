@@ -21,7 +21,6 @@ void ATankPlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	AimTowardsCrosshair();
-	
 }
 
 void ATankPlayerController::AimTowardsCrosshair()
@@ -33,7 +32,6 @@ void ATankPlayerController::AimTowardsCrosshair()
 	{
 		GetControlledTank()->AimAt(HitLocation);
 	}
-
 }
 
 //Get world location of linetrace through crosshair
