@@ -55,4 +55,8 @@ private:
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 10000.f;
 	
+	UPROPERTY(EditAnywhere, Category = Firing)
+	float FireRateInSeconds = 3;
+
+	double LastFireTime = 0;
 };

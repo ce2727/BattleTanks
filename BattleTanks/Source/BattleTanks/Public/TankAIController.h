@@ -7,9 +7,8 @@
 #include "Tank.h"
 #include "TankAIController.generated.h"
 
-/**
- * 
- */
+class UWorld;
+
 UCLASS()
 class BATTLETANKS_API ATankAIController : public AAIController
 {
@@ -19,7 +18,7 @@ public:
 	virtual void BeginPlay() override;
 	
 private:
-	ATank* GetControlledTank() const;
-	ATank* GetPlayerTank() const;
 	virtual void Tick(float DeltaTime);
+
+	
 };
